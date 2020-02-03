@@ -104,6 +104,7 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 * [Deploy and configure network load balancer](https://kubernetes.io/docs/tasks/access-application-cluster/create-external-load-balancer/)
 * [Know how to use Ingress rules](https://kubernetes.io/docs/concepts/services-networking/ingress/)
 * [Know how to configure and use the cluster DNS](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/)
+  *  [Customizing DNS service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)
 * [Understand CNI](https://github.com/containernetworking/cni)
   * [More information on CNI](http://www.dasblinkenlichten.com/understanding-cni-container-networking-interface/)
 
