@@ -114,6 +114,9 @@ $ kubectl get svc  -o wide --show-labels --all-namespaces
 * [Facilitate operating system upgrades](https://cloud.google.com/container-engine/docs/clusters/upgrade) #need review to make it more platform agnostic
 * [Implement backup and restore methodologies](https://kubernetes.io/docs/getting-started-guides/ubuntu/backups/)
 * [Etcd management/backups/restore](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd)
+  *  [etcd Disaster Recovery](https://etcd.io/docs/v3.3.12/op-guide/recovery/)
+  *  [etcd Failure](https://etcd.io/docs/v3.3.12/op-guide/failures/)
+  *  [etcd Runtime Configureation](https://etcd.io/docs/v3.3.12/op-guide/runtime-configuration/)
 
 
 ### [Troubleshooting](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) 10%
