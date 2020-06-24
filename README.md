@@ -193,6 +193,9 @@ get familiar with:
 kubectl create service clusterip my-svc -o yaml --dry-run > /tmp/srv.yaml
 kubectl create --edit -f /tmp/srv.yaml
 ```
+
+* [Be fast with kubectl in 1.18](https://medium.com/faun/be-fast-with-kubectl-1-18-ckad-cka-31be00acc443)
+
 ## Do you want more?
 
 - [Kubernauts resources list](https://docs.google.com/spreadsheets/d/10NltoF_6y3mBwUzQ4bcQLQfCE1BWSgUDcJXy-Qp2JEU/edit#gid=0)
