@@ -1,0 +1,61 @@
+{
+  "variables": {
+    "ssh_password": "cka"
+  },
+  "builders": [
+    {
+      "boot_command": [
+        "<esc><wait>",
+        "<esc><wait>",
+        "<enter><wait>",
+        "/install/vmlinuz<wait>",
+        " initrd=/install/initrd.gz",
+        " auto-install/enable=true",
+        " debconf/priority=critical",
+        " preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg<wait>",
+        " -- <wait>",
+        "<enter><wait>"
+      ],
+      "boot_wait": "10s",
+      "ssh_timeout":"30m",
+      "http_directory": "http",
+      "export_opts": [
+        "--manifest",
+        "--vsys",
+        "0"
+      ],
+      "format": "ova",
+      "guest_os_type": "Ubuntu_64",
+      "iso_checksum": "md5:cb7cd5a0c94899a04a536441c8b6d2bf",
+      "iso_url": "/path/to/iso/ubuntu-18.04.3-server-amd64.iso",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_username": "cka",
+      "type": "virtualbox-iso",
+      "vm_name":"ubuntu-18.04-k8s-1.18.6",
+      "communicator": "ssh", 		
+      "ssh_pty": "true"
+    }
+  ],
+  "provisioners":[
+    {
+       "type": "shell",
+       "execute_command": "echo '{{user `ssh_password`}}' | {{ .Vars }} sudo -E -S sh '{{ .Path }}'",
+       "inline": [
+          "echo 'cka    ALL=(ALL)  NOPASSWD:ALL' >> /etc/sudoers"
+       ]
+    },
+    {
+       "type":"shell",
+       "script":"setup/install-docker-k8s.sh"
+    },
+    {
+       "type":"shell",
+       "script":"setup/sysctl.sh"
+    },
+    {
+       "type":"shell",
+       "script":"setup/pull-images.sh"
+    }
+  ]  
+}

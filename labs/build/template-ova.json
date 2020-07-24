@@ -1,0 +1,27 @@
+{
+  "variables": {
+    "ssh_password": "cka"
+  },
+  "builders": [
+    {
+      "boot_wait": "10s",
+      "ssh_timeout":"30m",
+      "format": "ova",
+      "checksum": "md5:076b27c6dfa17eee6dcf4e0bc03e0ae5",
+      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+      "ssh_password": "{{user `ssh_password`}}",
+      "ssh_username": "cka",
+      "type": "virtualbox-ovf",
+      "source_path": "output-virtualbox-iso/ubuntu-18.04-k8s-1.18.6.ova",
+      "vm_name":"ubuntu-18.04-k8s-1.18.6-img",
+      "communicator": "ssh", 		
+      "ssh_pty": "true"
+    }
+  ],
+  "provisioners":[
+    {
+       "type":"shell",
+       "script":"setup/pull-images.sh"
+    }
+  ]  
+}
