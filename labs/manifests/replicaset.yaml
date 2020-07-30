@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: web-server
+  labels:
+    app: nginx
+    role: front
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: front
+  template:
+    metadata:
+      labels:
+        role: front
+    spec:
+      containers:
+      - name: web-server
+        image: nginx
+        ports:
+          - name: web
+            containerPort: 80
+            protocol: TCP

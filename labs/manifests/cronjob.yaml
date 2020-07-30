@@ -1,0 +1,24 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cronjob-example
+spec:
+  schedule: "*/1 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      completions: 4
+      parallelism: 1
+      template:
+        metadata:
+          ...
+        spec:
+          containers:
+            image: ubuntu
+            imagePullPolicy: IfNotPresent
+            name: backup
+            ...
+          restartPolicy: Never
+          ...

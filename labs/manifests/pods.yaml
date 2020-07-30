@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web1
+  labels:
+    role: front
+    app: nginx
+spec:
+  containers:
+    - name: web
+      image: nginx
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web2
+  labels:
+    role: front
+    app: nginx
+spec:
+  containers:
+    - name: web
+      image: nginx
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
