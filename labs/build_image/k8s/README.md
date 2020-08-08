@@ -32,3 +32,18 @@ build ultimate packet from first ova
 ```
 packer build template-ova.json
 ```
+
+# Initial Single Node Cluster
+Use kubeadm for initialize cluster.  
+```
+kubeadm init --kubernetes-version 1.18.6
+```
+
+Deploy Calico network plugin
+```
+$ wget https://docs.projectcalico.org/v3.14/manifests/calico.yaml
+$ sed -i 's/3.14.[0-9]\+/3.14.1/g' calico.yaml
+$ sudo kubectl --kubeconfig=/etc/kubernetes/admin.conf create -f calico.yaml
+```
+
+
