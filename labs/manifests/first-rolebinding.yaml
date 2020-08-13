@@ -1,0 +1,12 @@
+kind: RoleBinding
+metadata:
+  name: default-svc
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: service-reader
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: default
